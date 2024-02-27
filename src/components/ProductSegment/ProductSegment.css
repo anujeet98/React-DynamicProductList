@@ -1,0 +1,46 @@
+
+
+.segment{
+    /* display: flex; */
+    font-size: x-large;
+    /* justify-content: space-between; */
+}
+
+.title{
+    font-weight: bold;
+}
+
+.deleteBtn{
+    padding: 0.2rem 1rem;
+    font-size: larger;
+    border-radius: 8px;
+    background-color: rgba(255, 51, 0, 0.833);
+    color: white;
+}
+
+.deleteBtn:hover{
+    cursor: pointer;
+}
+
+.item-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.item-group{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+
+@media (max-width: 1200px) {
+    .segment{
+        font-size: small;
+    }
+    .deleteBtn{
+        font-size: x-small;
+    }
+}

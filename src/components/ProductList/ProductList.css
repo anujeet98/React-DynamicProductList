@@ -1,0 +1,15 @@
+.ProductList{
+    display: flex;
+    flex-direction: column;
+}
+
+.ProductList-title{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+@media (max-width: 1200px) {
+    .ProductList-title{
+        font-size: large;
+    }
+}

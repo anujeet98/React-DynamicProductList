@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Form from './components/Form/Form';
+import ProductList from './components/ProductList/ProductList';
 
 function App() {
+  const [items, setItems] = useState([]);
+  useEffect(()=>{
+    const storedItems = JSON.parse(localStorage.getItem('items')) || [];
+    setItems(storedItems);
+  },[]);
+
+  const addProdHandler = (newItem) =>{
+    const updatedItems = [...items, newItem];
+    localStorage.setItem('items', JSON.stringify(updatedItems))
+    setItems(updatedItems);
+  }
+  const deleteProdHandler = (id) => {
+    const updatedItems = items.filter(item=>item.id!==id);
+    localStorage.setItem('items', JSON.stringify(updatedItems));
+    setItems(updatedItems);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='left'>
+        <Form onSubmit={addProdHandler}></Form>
+      </div>
+      <div className='right'>
+        <ProductList data={items} onDeleteProduct={deleteProdHandler}></ProductList>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 
 
 .segment{
-    /* display: flex; */
+    display: flex;
+    flex-direction: column;
     font-size: x-large;
+    /* align-items: start; */
     /* justify-content: space-between; */
 }
 
@@ -25,13 +27,13 @@
 .item-list{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 0.5rem;
 }
 
 .item-group{
     display: flex;
-    justify-content: space-between;
+    /* align-items: start; */
+    /* justify-content: space-between; */
     gap: 0.5rem;
 }
 

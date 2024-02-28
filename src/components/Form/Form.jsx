@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './Form.css';
+import ProdContext from '../../contexts/prod-context';
 
-const Form  = (props) => {
+const Form  = () => {
     const [id, setID] = useState('');
     const [price, setPrice] = useState('');
     const [name, setName] = useState('');
     const [category, setCategory] = useState('Electronics');
+    const ctx = useContext(ProdContext);
 
     const setIdHandler = (event) => {
         setID(event.target.value);
@@ -21,6 +23,12 @@ const Form  = (props) => {
     }
     const formSubmitHandler = (event) =>{
         event.preventDefault();
+        if(price<=0)
+            return alert("Price cannot be negative or 0");
+        else if(name.trim().length===0)
+            return alert("Name cannot be empty");
+        else if(id.trim().length===0)
+            return alert("ID cannot be empty");
         const item = {
             id: id,
             name: name,
@@ -28,7 +36,7 @@ const Form  = (props) => {
             category: category,
         }
 
-        props.onSubmit(item);
+        ctx.onSubmit(item);
         setID('');
         setName('');
         setPrice('');
